@@ -9,7 +9,14 @@ const app = express();
 app.use(json());
 
 const FakeDB = require('fake-db');
-const db = new FakeDB([]);
+// Note: As per Level 2 part of the assignment, POST user route is still functional
+// This 'seed' for mock db is included to save you time when testing out user custom
+// activity route
+const db = new FakeDB([{
+  "name": "John Doe",
+  "accessibility": "High",
+  "price": "Low"
+}]);
 
 
 // Note: If we get more routes, break it in to its own folder
@@ -18,7 +25,7 @@ const db = new FakeDB([]);
 // Purposely pseudo-coded this to show it is sometimes better not to preoptimize ;)
 app.get(`/healthcheck`, (_, res) => res.sendStatus(200));
 
-app.get('/activity', async (req, res) => {
+app.get('/activity', async (_, res) => {
   // Note: based on assumption, we will always assume first data
   // in the mock db is the currentUser, but realistically we should have
   // a validation layer here to ensure user has permission/and accessbility
@@ -26,11 +33,11 @@ app.get('/activity', async (req, res) => {
   res.send(data)
 })
 
-app.get('/user/:id/activity', async (req, res) => {
-  console.info("TODO MAKE THIS ROUTE WORKING???")
+app.get('/user/activity', async (req, res) => {
   // Note: AC was little vague if we want to support default get call or not
   // Will have it as separate endpoint just to confirm both cases
-  const data = await activityController.get(db, req.params.id)
+  // Example endpoint http://localhost:3000/user/activity?id=example
+  const data = await activityController.get(db, req.query)
   res.send(data)
 })
 

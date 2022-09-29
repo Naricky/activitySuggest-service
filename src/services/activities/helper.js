@@ -28,16 +28,8 @@ const mapPrice = price => {
     }
 };
 
-const recursiveActivityCaller = async (accessibility, price) => {
-    const resp = await getActivity()
-    const mappedAccessibility = mapAccessibility(resp.data.accessibility)
-    const mappedPrice = mapPrice(resp.data.price)
-    if(accessibility !== mappedAccessibility  || price !== mappedPrice) {
-        recursiveActivityCaller();
-    }
-    else {
-        return activity
-    }
+const filterActivityByuserPreferences = async (accessibility, price, data) => {
+    return (accessibility === mapAccessibility(data.accessibility) && price === mapPrice(data.price))
 }
 
 const formActivityPayload = (data) => {
@@ -52,4 +44,4 @@ const formActivityPayload = (data) => {
 }
 
   
-module.exports = { formActivityPayload, getActivity, mapAccessibility, mapPrice, recursiveActivityCaller };
+module.exports = { formActivityPayload, getActivity, mapAccessibility, mapPrice, filterActivityByuserPreferences };
