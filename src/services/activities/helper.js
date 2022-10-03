@@ -5,8 +5,7 @@ const getActivity = async () => {
     return axios.get(ACTIVITY_API);
 }
 
-const mapAccessibility = accessibility => {
-    // Note: We can use switch case here, but my Golang bias coming in hot ;)
+const mapAccessibility = accessibility => { 
     if(accessibility <= 0.25){
         return 'High'
     } else if (accessibility > 0.25 && accessibility <= 0.75){

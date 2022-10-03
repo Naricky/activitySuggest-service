@@ -23,7 +23,6 @@ const get = async (db, userId) => {
             throw new Error('Error while getting custom activity for a specific user', error);
         }
     }
-
     try {
         const resp = await getActivity()
         return formActivityPayload(resp.data)
