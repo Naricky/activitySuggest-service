@@ -1,0 +1,7 @@
+{
+    "name": "activity-suggestor",
+    "scripts": {
+      "start": "node index.js"
+    }
+  }
+  

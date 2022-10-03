@@ -36,7 +36,7 @@ app.get('/activity', async (_, res) => {
 app.get('/user/activity', async (req, res) => {
   // Note: AC was little vague if we want to support default get call or not
   // Will have it as separate endpoint just to confirm both cases
-  // Example endpoint http://localhost:3000/user/activity?id=example
+  // Example endpoint http://localhost:8000/user/activity?id=example
   const data = await activityController.get(db, req.query)
   res.send(data)
 })
@@ -45,4 +45,4 @@ app.post('/user', async (req,res) => {
   res.send(await userController.create(db, req.body))
 })
 
-app.listen(PORT, () => console.log(`api is running on ${PORT}`));
+app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
