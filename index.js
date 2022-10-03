@@ -1,12 +1,15 @@
 const express = require('express');
 const { json } = require('body-parser');
+const cors = require('cors')
 
 const { PORT } = require('./config')
 const activityController = require('./src/services/activities/controller')
 const userController = require('./src/services/users/controller')
 
 const app = express();
+
 app.use(json());
+app.use(cors())
 
 const FakeDB = require('fake-db');
 // Note: As per Level 2 part of the assignment, POST user route is still functional

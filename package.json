@@ -1,7 +1,13 @@
 {
-    "name": "activity-suggestor",
-    "scripts": {
-      "start": "node index.js"
-    }
+  "name": "activity-suggestor",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "fake-db": "^1.0.2"
   }
-  
+}

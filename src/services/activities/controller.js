@@ -3,7 +3,7 @@ const { getActivity, formActivityPayload, filterActivityByuserPreferences } = re
 const get = async (db, userId) => {
     // Note: My assumption of AC `should now only return activities 
     // that fit the user’s requirements` was that its like a onClick returner
-    // based on condition, return the activity, or err messsaging/handling.
+    // based on condition, return the activity, or err messaging/handling.
     // if it was a case where we want to always return some type of activity,
     // we should use recursion upon the try clause such that we spam 3rd party api
     // ( we really shouldn't ) until we fetch the correct data, or better yet, we should  
@@ -15,7 +15,7 @@ const get = async (db, userId) => {
             // of database, i've opted to seed the db with initial user to get fake DB going on memory,
             // and use this logic as a checker to see if user is added or not
             if(users.length <= 1){
-                return { 'messsage': 'You have not added any user yet'}      
+                return { 'message': 'You have not added any user yet'}      
             }
             //based on an assumption the last added user to our db is the latest user
             const {accessibility, price} = users[users.length - 1]
@@ -24,7 +24,7 @@ const get = async (db, userId) => {
             if(result){
                 return formActivityPayload(resp.data)
             } else {
-                return { 'messsage': 'Your random activity suggestion does not match your preferences!'}        
+                return { 'message': 'Your random activity suggestion does not match your preferences!'}        
             }
         } catch (error) {
             throw new Error('Error while getting custom activity for a specific user', error);
