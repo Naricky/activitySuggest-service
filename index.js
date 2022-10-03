@@ -19,7 +19,7 @@ const db = new FakeDB([{
 }]);
 
 
-// Note: If we get more routes, break it in to its own folder
+// Note: If we get more routes, break it in to its own directories
 // eg: src/routes/index.js -> we can further break in to routes within
 // each services, i.e: src/routes *import users/routes/index*
 // Purposely pseudo-coded this to show it is sometimes better not to preoptimize ;)
