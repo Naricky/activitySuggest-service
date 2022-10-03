@@ -42,7 +42,9 @@ app.get('/user/activity', async (req, res) => {
 })
 
 app.post('/user', async (req,res) => {
-  res.send(await userController.create(db, req.body))
+  const users = await userController.create(db, req.body)
+  // returns the user just added
+  res.send(users[users.length -1])
 })
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));

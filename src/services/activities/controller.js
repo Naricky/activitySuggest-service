@@ -11,7 +11,14 @@ const get = async (db, userId) => {
     if(userId){
         try {
             const users = await db.getCollection()
-            const {accessibility, price} = users[0]
+            // Note: Because I have choose poor 3rd party fake DB where it cannot initiate empty array 
+            // of database, i've opted to seed the db with initial user to get fake DB going on memory,
+            // and use this logic as a checker to see if user is added or not
+            if(users.length <= 1){
+                return { 'messsage': 'You have not added any user yet'}      
+            }
+            //based on an assumption the last added user to our db is the latest user
+            const {accessibility, price} = users[users.length - 1]
             const resp = await getActivity()
             const result = await filterActivityByuserPreferences(accessibility, price, resp.data)
             if(result){
